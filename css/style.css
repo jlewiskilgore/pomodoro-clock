@@ -3,10 +3,11 @@ body {
    color: black;
 }
 
-#time-selector {
+#timeSelector {
    width: 50%;
    margin-left: 25%;
    margin-right: 25%;
+   margin-top: 10%;
 }
 
 #sessionTime {
@@ -17,6 +18,19 @@ body {
 #breakTime {
    float: right;
    border-style: solid;
+}
+
+#pomodoroSubmit {
+   text-align: center;
+}
+
+#startTimer {
+   margin-top: 20%;
+   height: 200px;
+   width: 300px;
+   font-size: 128px;
+   background-color: #67abb8;
+   color: #f15b40;
 }
 
 #footer {
