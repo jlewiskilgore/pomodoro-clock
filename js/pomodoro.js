@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    updateTimeDisplays(30,30); //initial values of slider
+    updateTimeDisplays(25,5); //initial values of slider
 });
 
 function showTimeValue(pomTime) {
