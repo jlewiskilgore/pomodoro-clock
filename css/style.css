@@ -54,6 +54,11 @@ body {
 
 #pomodoroTimer {
     display: none;
+    text-align: center;
+}
+
+#pomodoroTimer p {
+   font-size: 128px;
 }
 
 #footer {

@@ -17,6 +17,10 @@ function startTimer() {
 	//Hide Setup Div
 	var pomTimerSetup = document.getElementById("pomodoroTimerSetup");
 	pomTimerSetup.style.display = "none";
+	//Update Timer With Starting Time
+	var startingTime = document.getElementById("sessionTimeAmount").innerHTML;
+	var timerDisplay = document.getElementById("mainTimerDisplay");
+	timerDisplay.innerHTML = startingTime;
 	//Show Timer Div
 	pomTimer = document.getElementById("pomodoroTimer");
 	pomTimer.style.display = "inline";
