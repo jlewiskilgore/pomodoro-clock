@@ -3,9 +3,9 @@ $( document ).ready(function() {
 });
 
 function showTimeValue(pomTime) {
-	console.log(pomTime);
-	var breakTime = 60 - pomTime;
-	console.log(breakTime);
+	var pomTime = document.getElementById("sessionTimeSelector").value;
+	var breakTime = document.getElementById("breakTimeSelector").value;
+
 	updateTimeDisplays(pomTime, breakTime);
 }
 

@@ -29,10 +29,9 @@
 	<div id="pomodoroTimerSetup">
 		<div>
 			<div class="container" id="timeDisplays">
-				<div class="col-md-4" id="sessionTime">SESSION TIME<p id="sessionTimeAmount">0:00</p></div>
-				<div class="col-md-4" id="breakTime">BREAK TIME<p id="breakTimeAmount">0:00</p></div>
+				<div class="col-md-4" id="sessionTime">SESSION TIME<p id="sessionTimeAmount">0:00</p><input id="sessionTimeSelector" type="range"  min="0" max="60" oninput="showTimeValue()" /></div>
+				<div class="col-md-4" id="breakTime">BREAK TIME<p id="breakTimeAmount">0:00</p><input id="breakTimeSelector" type="range"  min="0" max="60" oninput="showTimeValue()" /></div>
 			</div>
-		<input id="timeSelector" type="range"  min="0" max="60" oninput="showTimeValue(this.value)" />
 		</div>
 
 		<div id="pomodoroSubmit">
