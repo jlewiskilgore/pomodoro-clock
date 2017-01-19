@@ -28,6 +28,7 @@ function initTimerScreen() {
 function startTimer() {
 	isBreak = 0;
 	console.log("start pom");
+	document.getElementById("mainTimerLabel").innerHTML = "Get to work!";
 	//Update Timer With Starting Time
 	var startingTime = document.getElementById("sessionTimeAmount").innerHTML;
 	var timerDisplay = document.getElementById("mainTimerDisplay");
@@ -42,6 +43,7 @@ function startTimer() {
 function startBreak() {
 	isBreak = 1;
 	console.log("start break");
+	document.getElementById("mainTimerLabel").innerHTML = "Good Job! Let's take a quick break now.";
 	//Update Timer With Break Time
 	var startingTime = document.getElementById("breakTimeAmount").innerHTML;
 	var timerDisplay = document.getElementById("mainTimerDisplay");
