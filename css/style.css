@@ -25,6 +25,10 @@ body {
    text-align: center;
 }
 
+#pomodoroPause {
+   text-align: center;
+}
+
 #startTimer {
    height: 200px;
    width: 300px;
@@ -53,6 +57,18 @@ body {
 
 #pomodoroTimer p {
    font-size: 128px;
+}
+
+#mainTimerLabel {
+   font-size: 64px;
+}
+
+#pauseTimer {
+   font-size: 64px;
+   color: #f15b40;
+   background: none;
+   border: none;
+   height: 100px;
 }
 
 #footer {

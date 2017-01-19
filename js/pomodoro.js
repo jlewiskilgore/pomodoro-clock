@@ -1,6 +1,5 @@
 $( document ).ready(function() {
     updateTimeDisplays(25,5); //initial values of slider
-    var isPaused = 0;
     var isBreak = 0;
 });
 
@@ -54,6 +53,18 @@ function startBreak() {
 	countdownTimer(startingTime);
 }
 
+function timerPauseButton() {
+	var isPaused = document.getElementById("pauseTimer");
+	//If "Pause" button is pressed, pause timer
+	if(isPaused.value == "Pause") {
+		isPaused.value = "Resume";
+	}
+	//Otherwise, "Resume" button will unpause timer
+	else {
+		isPaused.value = "Pause";
+	}
+}
+
 function endTimer() {
 	//Hide Timer Div
 	var pomTimer = document.getElementById("pomodoroTimer");
@@ -72,19 +83,24 @@ function countdownTimer(startTime) {
 	var timerDisplay = document.getElementById("mainTimerDisplay");
 	var timeDisplayStr;
 
+	var isPaused = document.getElementById("pauseTimer");
+
 	var timer = setInterval(function() {
-		if(startTimeSec > 0){
-			startTimeSec--;
-			timeDisplayStr = formatClockDisplay(startTimeSec);
-			timerDisplay.innerHTML = timeDisplayStr;
-		}
-		else{
-			clearInterval(timer);
-			if(isBreak) {
-				startTimer();
+		//If "Resume" button is displayed, timer should be paused
+		if(isPaused.value !== "Resume") {
+			if(startTimeSec > 0){
+				startTimeSec--;
+				timeDisplayStr = formatClockDisplay(startTimeSec);
+				timerDisplay.innerHTML = timeDisplayStr;
 			}
-			else {
-				startBreak();
+			else{
+				clearInterval(timer);
+				if(isBreak) {
+					startTimer();
+				}
+				else {
+					startBreak();
+				}
 			}
 		}
 	}, 1000);
