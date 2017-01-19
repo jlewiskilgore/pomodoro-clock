@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     updateTimeDisplays(25,5); //initial values of slider
     var isBreak = 0;
+    var timer; //To hold the SetInterval object for the timer
 });
 
 function showTimeValue(pomTime) {
@@ -34,7 +35,7 @@ function startTimer() {
 	var timerDisplay = document.getElementById("mainTimerDisplay");
 	timerDisplay.innerHTML = startingTime;
 	//Show Timer Div
-	pomTimer = document.getElementById("pomodoroTimer");
+	var pomTimer = document.getElementById("pomodoroTimer");
 	pomTimer.style.display = "inline";
 	//Start Countdown
 	countdownTimer(startingTime);
@@ -49,7 +50,7 @@ function startBreak() {
 	var timerDisplay = document.getElementById("mainTimerDisplay");
 	timerDisplay.innerHTML = startingTime;
 	//Show Timer Div
-	pomTimer = document.getElementById("pomodoroTimer");
+	var pomTimer = document.getElementById("pomodoroTimer");
 	pomTimer.style.display = "inline";
 	//Start Countdown
 	countdownTimer(startingTime);
@@ -74,6 +75,8 @@ function endTimer() {
 	//Show Setup Div
 	var pomTimerSetup = document.getElementById("pomodoroTimerSetup");
 	pomTimerSetup.style.display = "inline";
+	//Destroy current timer object
+	clearInterval(timer);
 }
 
 function countdownTimer(startTime) {
@@ -87,7 +90,7 @@ function countdownTimer(startTime) {
 
 	var isPaused = document.getElementById("pauseTimer");
 
-	var timer = setInterval(function() {
+	timer = setInterval(function() {
 		//If "Resume" button is displayed, timer should be paused
 		if(isPaused.value !== "Resume") {
 			if(startTimeSec > 0){
