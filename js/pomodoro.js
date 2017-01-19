@@ -1,5 +1,7 @@
 $( document ).ready(function() {
     updateTimeDisplays(25,5); //initial values of slider
+    var isPaused = 0;
+    var isBreak = 0;
 });
 
 function showTimeValue(pomTime) {
@@ -16,12 +18,33 @@ function updateTimeDisplays(sessionTime, breakTime) {
 	bTimer.innerHTML = breakTime + ":00";
 }
 
-function startTimer() {
+function initTimerScreen() {
 	//Hide Setup Div
 	var pomTimerSetup = document.getElementById("pomodoroTimerSetup");
 	pomTimerSetup.style.display = "none";
+
+	startTimer();
+}
+
+function startTimer() {
+	isBreak = 0;
+	console.log("start pom");
 	//Update Timer With Starting Time
 	var startingTime = document.getElementById("sessionTimeAmount").innerHTML;
+	var timerDisplay = document.getElementById("mainTimerDisplay");
+	timerDisplay.innerHTML = startingTime;
+	//Show Timer Div
+	pomTimer = document.getElementById("pomodoroTimer");
+	pomTimer.style.display = "inline";
+	//Start Countdown
+	countdownTimer(startingTime);
+}
+
+function startBreak() {
+	isBreak = 1;
+	console.log("start break");
+	//Update Timer With Break Time
+	var startingTime = document.getElementById("breakTimeAmount").innerHTML;
 	var timerDisplay = document.getElementById("mainTimerDisplay");
 	timerDisplay.innerHTML = startingTime;
 	//Show Timer Div
@@ -49,14 +72,21 @@ function countdownTimer(startTime) {
 	var timerDisplay = document.getElementById("mainTimerDisplay");
 	var timeDisplayStr;
 
-	setInterval(function() {
+	var timer = setInterval(function() {
 		if(startTimeSec > 0){
 			startTimeSec--;
 			timeDisplayStr = formatClockDisplay(startTimeSec);
 			timerDisplay.innerHTML = timeDisplayStr;
 		}
-		else
-			return;
+		else{
+			clearInterval(timer);
+			if(isBreak) {
+				startTimer();
+			}
+			else {
+				startBreak();
+			}
+		}
 	}, 1000);
 }
 
